@@ -92,3 +92,37 @@ op.RecordIdentifier = "e23fa96e-46ac-4b06-bac1-02cf0fe636b8";
 //Create the HttpRequestMessage to send that contains your OData create operation
 HttpRequestMessage req = op.ToHttpRequestMessage("https://my_site.com/my_odata_endpoint");
 ```
+
+## Converting an OData HttpRequestMessage directly to SQL
+Back-end API's playing the server role are often the medium that directly accept an OData query via an HTTP request, execute the query against the SQL database, and return the appropriate response to the HTTP requestor. This library is designed to simplify this use case by directly handling the "translation" from an HttpRequestMessage to a SQL query. 
+
+Example converting the `HttpRequestMessage` from the **Read** operation example above:
+```
+//"req" is an OData-formatted HttpRequestMessage that the server has received
+//Parsing the request:
+ODataOperation op = ODataOperation.Parse(req);
+
+//Convert to SQL
+string sql_query = op.ToSql();
+Console.WriteLine(sql_query);
+
+//select top 25 FirstName,LastName from Contacts where Age >= '47' and LastName = 'Smith' order by DateOfBirth desc
+```
+*Update* and *Delete* OData operations require the SQL table's primary key to be referenced. In these cases, you will need to pass the name of the primary key column to the `ToSql()` method.
+
+For example, on the **Update** operation example from above:
+```
+//"req" is an OData-formatted HttpRequestMessage that the server has received
+//Parsing the request:
+ODataOperation op = ODataOperation.Parse(req);
+
+//Convert to SQL
+string sql_query = op.ToSql("ContactID");
+Console.WriteLine(sql_query);
+
+//update Contact set Address = '101 Main Street' where ContactID = 'e23fa96e-46ac-4b06-bac1-02cf0fe636b8'
+```
+In the above example, `ContactID` is the primary key of the `Contact` table. If you do NOT specify the primary key but the `ToSql()` method requires it for a conversion, it will substitute the primary key with "<PRIMARY_KEY>":
+```
+update Contact set Address = '101 Main Street' where <PRIMARY_KEY> = 'e23fa96e-46ac-4b06-bac1-02cf0fe636b8'
+```
