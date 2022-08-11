@@ -7,7 +7,7 @@ namespace testing
     {
         public static void Main(string[] args)
         {
-            
+
         }
     }
 }
