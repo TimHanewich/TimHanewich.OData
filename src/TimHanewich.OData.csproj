@@ -4,7 +4,32 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>TimHanewich.OData</Title>
+    <Authors>Tim Hanewich</Authors>
+    <Version>0.1.0</Version>
+    <PackageId>TimHanewich.OData</PackageId>
+    <Company>Tim Hanewich</Company>
+    <Product>TimHanewich.OData</Product>
+    <Description>TimHanewich.OData s a lightweight .NET library for parsing, composing, and translating OData operations.</Description>
+    <Copyright>Tim Hanewich</Copyright>
+    <PackageProjectUrl>https://github.com/TimHanewich/TimHanewich.OData</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/TimHanewich/TimHanewich.OData</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>odata;sql;hanewich;functions;api;server</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
