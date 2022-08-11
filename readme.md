@@ -2,7 +2,7 @@
 **TimHanewich.OData** is a lightweight .NET library for parsing, composing, and translating OData operations. [OData, short for "Open Data Protocol"](https://www.odata.org/) allows the creation and consumption of queryable and interoperable REST APIs in a simple and standard way. Microsoft originally initiated OData in 2007 and OData has become the industry-embraced standard since.
 
 This library is designed to assist with the following:
-1. Constructing an OData query and converting this to an `HttpRequestMessage`
+1. Constructing an OData query and converting this to an `HttpRequestMessage` to be sent to an OData API
 2. Deconstructing an OData `HttpRequestMessage` into it's various components
 3. Translating an OData query to it's SQL equivalent that can be executed against a SQL database 
 
