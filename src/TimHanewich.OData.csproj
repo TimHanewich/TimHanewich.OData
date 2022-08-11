@@ -18,10 +18,15 @@
     <RepositoryUrl>https://github.com/TimHanewich/TimHanewich.OData</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>odata;sql;hanewich;functions;api;server</PackageTags>
+    <PackageLicenseFile>license.md</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\license.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
