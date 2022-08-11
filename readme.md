@@ -6,6 +6,8 @@ This library is designed to assist with the following:
 2. Deconstructing an OData `HttpRequestMessage` into it's various components
 3. Translating an OData query to it's SQL equivalent that can be executed against a SQL database 
 
+This library supports the following OData parameters: `$filter`, `$select`, `$orderby`, `$count`, `$top`, `$skip`.
+
 ## Read Operation
 Example read operation with $top, $filter, $select, $order:
 ```
