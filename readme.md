@@ -45,3 +45,50 @@ Console.WriteLine(o.ToHttpRequestMessage("https://my_site.com/my_odata_endpoint/
 
 //https://my_site.com/my_odata_endpoint/Contacts?$filter=Age+ge+47+and+LastName+eq+%27Smith%27&$select=FirstName%2cLastName&$orderby=DateOfBirth+desc&$top=25
 ```
+
+## Create Operation
+Example of creating a `Contact` record via an OData request and converting the `ODataOperation` into an `HttpRequestMessage` that can be delivered to the OData endpoint:
+```
+ODataOperation op = new ODataOperation();
+op.Operation = DataOperation.Create;
+op.Resource = "Contact";
+
+//Create the object with JSON that will be created
+JObject jo = new JObject();
+jo.Add("FirstName", "John");
+jo.Add("LastName", "Appleseed");
+jo.Add("DateOfBirth", new DateTime(1980, 1, 1));
+op.Payload = jo;
+
+//Create the HttpRequestMessage to send that contains your OData create operation
+HttpRequestMessage req = op.ToHttpRequestMessage("https://my_site.com/my_odata_endpoint");
+```
+
+## Update Operation
+Example update operation on a Contact record with primary key `e23fa96e-46ac-4b06-bac1-02cf0fe636b8`:
+```
+ODataOperation op = new ODataOperation();
+op.Operation = DataOperation.Update;
+op.Resource = "Contact";
+op.RecordIdentifier = "e23fa96e-46ac-4b06-bac1-02cf0fe636b8";
+
+//Create the payload that defines the properties that should be modified
+JObject jo = new JObject();
+jo.Add("Address", "101 Main Street");
+op.Payload = jo;
+
+//Create the HttpRequestMessage to send that contains your OData create operation
+HttpRequestMessage req = op.ToHttpRequestMessage("https://my_site.com/my_odata_endpoint");
+```
+
+## Delete Operation
+Example deletion of a Contact record with primary key `e23fa96e-46ac-4b06-bac1-02cf0fe636b8`:
+```
+ODataOperation op = new ODataOperation();
+op.Operation = DataOperation.Delete;
+op.Resource = "Contact";
+op.RecordIdentifier = "e23fa96e-46ac-4b06-bac1-02cf0fe636b8";
+
+//Create the HttpRequestMessage to send that contains your OData create operation
+HttpRequestMessage req = op.ToHttpRequestMessage("https://my_site.com/my_odata_endpoint");
+```
