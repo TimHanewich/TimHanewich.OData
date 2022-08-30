@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Title>TimHanewich.OData</Title>
     <Authors>Tim Hanewich</Authors>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <PackageId>TimHanewich.OData</PackageId>
     <Company>Tim Hanewich</Company>
     <Product>TimHanewich.OData</Product>
