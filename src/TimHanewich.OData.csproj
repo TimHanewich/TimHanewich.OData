@@ -19,6 +19,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>odata;sql;hanewich;functions;api;server</PackageTags>
     <PackageLicenseFile>license.md</PackageLicenseFile>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
